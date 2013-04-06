@@ -1,0 +1,51 @@
+@import url(http://fonts.googleapis.com/css?family=Source+Sans+Pro&subset=latin,latin-ext);
+@import url(http://fonts.googleapis.com/css?family=Source+Code+Pro&subset=latin,latin-ext);
+
+body {
+    margin-top: 40px;
+}
+
+a.headerlink:hover {
+    background-color: #c60f0f;
+    color: #c60f0f;
+}
+
+h1 {
+    margin-top: 25px;
+}
+
+.headspace {
+    /* margin-top: 20px; */
+    margin-bottom: 20px;
+}
+
+/* Footer
+-------------------------------------------------- */
+
+.footer {
+  text-align: center;
+  padding: 30px 0;
+  margin-top: 70px;
+  border-top: 1px solid #e5e5e5;
+  background-color: #f5f5f5;
+}
+.footer p {
+  margin-bottom: 0;
+  color: #777;
+}
+.footer-links {
+  margin: 10px 0;
+}
+.footer-links li {
+  display: inline;
+  padding: 0 2px;
+}
+.footer-links li:first-child {
+  padding-left: 0;
+}
+
+
+div.addthis_toolbox {
+  width: 420px;
+  margin: 0 auto;
+}
