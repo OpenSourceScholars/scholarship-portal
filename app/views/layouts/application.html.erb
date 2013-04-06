@@ -1,0 +1,70 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+  <title>Scholarship Portal</title>
+  <link rel="shortcut icon" href="/assets/favicon.ico">
+  <%= stylesheet_link_tag    "application", :media => "all" %>
+  <%= javascript_include_tag "application" %>
+  <%= csrf_meta_tags %>
+</head>
+<body>
+  <div id="#top"></div>
+  <div class="navbar">
+    <div class="navbar-inner navbar-fixed-top">
+      <span class="pull-left"><a class="brand" href="/">Scholarship Portal</a></span>
+      
+      <ul class="nav">
+	<li class="divider-vertical"></li>
+	<% unless user_signed_in? -%>
+	<li><%= link_to "Sign in", new_user_session_path %></li>
+	<li class="divider-vertical"></li>
+	<li><%= link_to "Register", '/users/sign_up' %></li>
+	<% else -%>
+	<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	<li class="divider-vertical"></li>
+	<li><%= link_to "Submissions", "/submissions" %></li>
+	<li class="divider-vertical"></li>
+	<li><%= link_to "New Submission", "/submissions/new" %></li>
+	<% end -%>
+	<li class="divider-vertical"></li>
+      </ul>
+    </div>
+  </div>
+  
+  <div class="container-fluid">
+    <div class="row-fluid">
+      <!-- ############### LEFT NAVIGATION ############-->
+      <div class="span3">
+        &nbsp;
+      </div>
+
+      <!-- ############### MAIN BODY ############-->
+      <div class="span7">
+      <br /><br />
+      <%= yield %>
+      </div>
+
+    </div>
+  </div>
+
+  <br />
+  
+  <!-- Footer ================================================== -->
+  <div class="container">
+    <hr />
+    <p>Open Source Scholars website designed and built by <a href="http://twitter.com/akbutcher" target="_blank">@akbutcher</a> using <a href="http://rubyonrails.org/">Ruby on Rails</a> and the <a href="http://twitter.github.com/bootstrap/" target="_blank">Bootstrap</a> framework.</p>
+    
+    <p><a href="http://glyphicons.com">Glyphicons Free</a> licensed under <a href="http://creativecommons.org/licenses/by/3.0/">CC BY 3.0</a>.</p>
+    
+    <!-- AddThis Button BEGIN -->
+    <div class="addthis_toolbox addthis_default_style ">
+      <a class="addthis_button_facebook_like" fb:like:layout="button_count"></a>
+      <a class="addthis_button_tweet"></a>
+      <a class="addthis_button_pinterest_pinit"></a>
+      <a class="addthis_counter addthis_pill_style"></a>
+    </div>
+    <script type="text/javascript" src="//s7.addthis.com/js/300/addthis_widget.js#pubid=xa-514e4d6059c369dc"></script>
+    <!-- AddThis Button END -->
+  </div>
+</body>
+</html>

@@ -1,0 +1,43 @@
+<%= form_for(@submission) do |f| %>
+  <% if @submission.errors.any? %>
+    <div id="error_explanation">
+      <h2><%= pluralize(@submission.errors.count, "error") %> prohibited this submission from being saved:</h2>
+
+      <ul>
+      <% @submission.errors.full_messages.each do |msg| %>
+        <li><%= msg %></li>
+      <% end %>
+      </ul>
+    </div>
+  <% end %>
+
+  <div class="field">
+    <p><b>Project Name</b></p>
+    <%= f.text_field :project %>
+  </div>
+  <br />
+  <div class="field">
+    <p><b>Short Description (blurb)</b></p>
+    <p><small>Describe what you did in a few words.</small></p>
+    <%= f.text_field :blurb, :style => "width:60%;" %>
+  </div>
+  <br />
+  <div class="field">
+    <p><b>Project Link</b></p>
+    <%= f.text_field :project_link, :style => "width:60%;" %>
+  </div>
+  <br />
+  <div class="field">
+    <p><b>Contribution Link</b></p>
+    <p><small>A link to where we can find your contribution.</small></p>
+    <%= f.text_field :contribution_link, :style => "width:60%;" %>
+  </div>
+  <br />
+  <div class="field">
+    <p><b>Description</b></p>
+    <p><small>A long winded description of what you accomplished with this contribution.</small></p>
+    <%= f.text_area :description, :style => "width:60%;" %>
+  </div>
+
+  <button type="submit" class="btn btn-primary">Submit</button>
+<% end %>

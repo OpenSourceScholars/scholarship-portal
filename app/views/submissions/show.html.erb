@@ -1,0 +1,30 @@
+<p id="notice"><%= notice %></p>
+
+<h2><%= @submission.blurb %></h2>
+
+<p>
+  <b>Project:</b>
+  <%= @submission.project %>
+</p>
+
+<p>
+  <b>Project link:</b>
+  <a href="#{@submissions.project_link}"><%= @submission.project_link %></a>
+</p>
+
+<p>
+  <b>Contribution link:</b>
+  <a href="#{@submission.contribution_link}"><%= @submission.contribution_link %></a>
+</p>
+
+<p>
+  <b>Description:</b>
+</p>
+<pre>
+  <%= @submission.description %>
+</pre>
+
+<br />
+
+<%= link_to 'Edit', edit_submission_path(@submission), :class => "btn btn-primary" %> |
+<%= link_to 'Back', submissions_path, :class => "btn" %>
