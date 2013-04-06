@@ -1,9 +1,0 @@
-ScholarshipPortal::Application.routes.draw do
-
-  root :to => "home#index"
-
-  resources :submissions
-
-  devise_for :users, :controllers => { :sessions => "users/sessions" }
-
-end
