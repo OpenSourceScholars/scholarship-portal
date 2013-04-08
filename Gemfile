@@ -37,5 +37,8 @@ gem 'jquery-rails'
 # To use debugger
 # gem 'debugger'
 
-gem 'therubyracer'
+if RUBY_PLATFORM.downcase.include?("linux")
+  gem 'therubyracer'
+end
+
 gem 'devise'
