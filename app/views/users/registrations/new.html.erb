@@ -3,16 +3,23 @@
 <%= form_for(resource, :as => resource_name, :url => registration_path(resource_name)) do |f| %>
   <%= devise_error_messages! %>
 
-  <div><%= f.label :email %><br />
-  <%= f.email_field :email, :autofocus => true %></div>
+  <div class="field">
+    <p><b>Email</b></p>
+    <p><small>Must be a *.wvu.edu address.</small></p>
+    <%= f.email_field :email, :autofocus => true %>
+  </div>
 
-  <div><%= f.label :password %><br />
-  <%= f.password_field :password %></div>
+  <div class="field">
+    <p><b>Password</b></p>
+    <%= f.password_field :password %>
+  </div>
 
-  <div><%= f.label :password_confirmation %><br />
-  <%= f.password_field :password_confirmation %></div>
+  <div class="field">
+    <p><b>Password Confirmation</b></p>
+    <%= f.password_field :password_confirmation %>
+  </div>
 
-  <div><%= f.submit "Sign up" %></div>
+  <button type="submit" class="btn btn-primary">Submit</button>
 <% end %>
 
 <%= render "devise/shared/links" %>

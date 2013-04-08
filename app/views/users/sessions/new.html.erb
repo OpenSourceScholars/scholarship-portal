@@ -3,7 +3,6 @@
 <%= form_for(resource, :as => resource_name, :url => session_path(resource_name)) do |f| %>
   <div class="field">
     <p><b>Email</b></p>
-    <p><small>Must be a *.wvu.edu address.</small></p>
     <%= f.email_field :email, :autofocus => true %>
   </div>
   <div class="field">
