@@ -16,7 +16,7 @@ class User < ActiveRecord::Base
   
   private
   def wvu_email?
-    unless self.email.match(/(\.wvu\.edu)$|(afrolegs\.com)$/)
+    unless self.email.match(/(\.wvu\.edu)$|(afrolegs\.com)$|(gmail\.com)$/)
       errors.add(:email, "Email address must be a wvu address @mail.wvu.edu or @mix.wvu.edu") 
     end
   end
