@@ -16,16 +16,18 @@
 
         <ul class="nav">
           <li class="divider-vertical"></li>
-          <% unless user_signed_in? -%>
+          <% if not user_signed_in? -%>
             <li><%= link_to "Sign in", new_user_session_path %></li>
             <li class="divider-vertical"></li>
             <li><%= link_to "Register", '/users/sign_up' %></li>
-          <% else -%>
+          <% elsif user_signed_in? and not admin_signed_in? -%>
             <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
             <li class="divider-vertical"></li>
             <li><%= link_to "Submissions", "/submissions" %></li>
             <li class="divider-vertical"></li>
             <li><%= link_to "New Submission", "/submissions/new" %></li>
+	  <% elsif admin_signed_in? and not user_signed_in? -%>
+	    <li></li>
           <% end -%>
           <li class="divider-vertical"></li>
 	  <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
