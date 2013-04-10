@@ -11,3 +11,7 @@ admin = Admin.create! do |u|
   u.password              = 'adminpassword'
   u.password_confirmation = 'adminpassword'
 end
+
+if admin
+   puts "Created user `admin@admin.com` identified `adminpassword`"
+end

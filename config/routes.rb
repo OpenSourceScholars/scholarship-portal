@@ -5,6 +5,7 @@ ScholarshipPortal::Application.routes.draw do
   root :to => "home#index"
 
   match "/admin" => "home#admin"
+  match "/users/show/:email" => "home#user", :constraints => {:email => /.*(com)?/, :format => false}
 
   resources :submissions
 

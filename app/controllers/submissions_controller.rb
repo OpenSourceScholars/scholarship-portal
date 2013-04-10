@@ -1,7 +1,9 @@
 class SubmissionsController < ApplicationController
-  
-  before_filter :authenticate_user!
-  before_filter :find_submission, :only => [:show, :edit, :update, :destroy]
+
+  unless admin_signed_in?  
+    before_filter :authenticate_user!
+    before_filter :find_submission, :only => [:show, :edit, :update, :destroy]
+  end
 
   # GET /submissions
   # GET /submissions.json
