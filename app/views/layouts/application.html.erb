@@ -54,6 +54,10 @@
 	    <li><%= link_to "Create admin", "#" %></li>
  	    <li class="divider-vertical"></li>
 	  </ul>
+	  <% else %>
+	  <ul class="nav">
+	    <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></li>
+	  </ul>
           <% end -%>
 	  <ul class="nav pull-right">
 	    <li><a href="/admin"><i class="icon-wrench"></i> Admin</a></li>
