@@ -44,6 +44,15 @@
         <!-- ############### MAIN BODY ############-->
         <div class="span7">
           <br /><br />
+	  <% if notice %>
+	  <div class="alert alert-info"><%= notice %></div>
+	  <% elsif flash[:notice] %>
+	  <%= content_tag(:div, flash[:notice], :class => "alert alert-info") %>
+	  <% elsif flash[:error] %>
+	  <%= content_tag(:div, flash[:error], :class => "alert alert-error") %>
+	  <% elsif flash[:alert] %>
+	  <%= content_tag(:div, flash[:alert], :class => "alert alert-block") %>
+	  <% end %>
           <%= yield %>
         </div>
 
