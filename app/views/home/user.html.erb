@@ -13,9 +13,11 @@
   <tr>
     <td><%= submission.project %></td>
     <td><%= submission.blurb %></td>
-    <td><%= link_to 'Show', submission, :class => "btn" %></td>
+    <td><%= link_to 'Show', "/users/#{@user.email}/#{submission.id}", :class => "btn" %></td>
   </tr>
 <% end %>
 </table>
 
 <br />
+
+<%= link_to "Back", "/admin", :class => "btn" %>

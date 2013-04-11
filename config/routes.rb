@@ -1,14 +1,13 @@
 ScholarshipPortal::Application.routes.draw do
 
+  devise_for :users
   devise_for :admins
 
   root :to => "home#index"
 
   match "/admin" => "home#admin"
-  match "/users/show/:email" => "home#user", :constraints => {:email => /.*(com)?/, :format => false}
+  match "/users/:email/:id" => "home#show", :constraints => {:email => /.*(com)?/, :format => false}
+  match "/users/:email" => "home#user", :constraints => {:email => /.*(com)?/, :format => false}
 
   resources :submissions
-
-  devise_for :users
-
 end
