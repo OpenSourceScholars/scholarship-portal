@@ -14,23 +14,50 @@
       <div class="navbar-inner navbar-fixed-top">
         <span class="pull-left"><a class="brand" href="/">Scholarship Portal</a></span>
 
-        <ul class="nav">
-          <li class="divider-vertical"></li>
-          <% unless user_signed_in? -%>
+          <% if not user_signed_in? and not admin_signed_in? -%>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
             <li><%= link_to "Sign in", new_user_session_path %></li>
             <li class="divider-vertical"></li>
             <li><%= link_to "Register", '/users/sign_up' %></li>
-          <% else -%>
-            <li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	    <li class="divider-vertical"></li>
+	    <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
+	    <li class="divider-vertical"></li>
+	  </ul>
+          <% elsif user_signed_in? and not admin_signed_in? -%>
+          <ul class="nav">
+            <li class="divider-vertical"></li>
+	    <li class="dropdown">
+	      <a href="#" class="dropdown-toggle" data-toggle="dropdown">
+		<i class="icon-user"></i> <%= current_user.email %>
+		<b class="caret"></b>
+	      </a>
+	      <ul class="dropdown-menu">
+		<li><%= link_to "Edit user", edit_user_registration_path %></li>
+		<li class="divider"></li>
+		<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+	      </ul>
+	    </li>
             <li class="divider-vertical"></li>
             <li><%= link_to "Submissions", "/submissions" %></li>
             <li class="divider-vertical"></li>
             <li><%= link_to "New Submission", "/submissions/new" %></li>
+            <li class="divider-vertical"></li>
+	    <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
+ 	    <li class="divider-vertical"></li>
+	  </ul>
+	  <% elsif admin_signed_in? and not user_signed_in? -%>
+	  <ul class="nav">
+ 	    <li class="divider-vertical"></li>
+	    <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></li>
+ 	    <li class="divider-vertical"></li>
+	    <li><%= link_to "Create admin", "#" %></li>
+ 	    <li class="divider-vertical"></li>
+	  </ul>
           <% end -%>
-          <li class="divider-vertical"></li>
-	  <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
-	  <li class="divider-vertical"></li>
-        </ul>
+	  <ul class="nav pull-right">
+	    <li><a href="/admin"><i class="icon-wrench"></i> Admin</a></li>
+	  </ul>
       </div>
     </div>
 
