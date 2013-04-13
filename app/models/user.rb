@@ -21,7 +21,7 @@ class User < ActiveRecord::Base
   private
   def valid_email?
     if Rails.env.production?
-      unless self.email.match(/(\.wvu\.edu)$$/)
+      unless self.email.match(/(\.wvu\.edu)$/)
         errors.add(:email, "address must be a wvu address @mail.wvu.edu or @mix.wvu.edu")
       end
     end
