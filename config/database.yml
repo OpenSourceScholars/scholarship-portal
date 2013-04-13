@@ -19,7 +19,8 @@ test:
   timeout: 5000
 
 production:
-  adapter: sqlite3
-  database: db/production.sqlite3
-  pool: 5
-  timeout: 5000
+  adapter: mysql
+  username: portal
+  password: <%= begin IO.read("config/.db_password") rescue "" end %>
+  database: scholarship_portal
+  host: localhost
