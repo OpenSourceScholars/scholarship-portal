@@ -33,9 +33,17 @@
 		<b class="caret"></b>
 	      </a>
 	      <ul class="dropdown-menu">
-		<li><%= link_to "Edit user", edit_user_registration_path %></li>
+		<li>
+		  <%= link_to edit_user_registration_path do %>
+		  <i class="icon-pencil"></i> Edit user
+		  <% end %>
+		</li>
 		<li class="divider"></li>
-		<li><%= link_to "Sign out", destroy_user_session_path, :method => :delete %></li>
+		<li>
+		  <%= link_to destroy_user_session_path, :method => :delete do %>
+		  <i class="icon-signout"></i> Sign out
+		  <% end %>
+		</li>
 	      </ul>
 	    </li>
             <li class="divider-vertical"></li>
