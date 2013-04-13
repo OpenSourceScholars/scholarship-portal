@@ -14,7 +14,7 @@
       <div class="navbar-inner navbar-fixed-top">
         <span class="pull-left"><a class="brand" href="/">Scholarship Portal</a></span>
 
-          <% if not user_signed_in? and not admin_signed_in? -%>
+          <% if not user_signed_in? -%>
           <ul class="nav">
             <li class="divider-vertical"></li>
             <li><%= link_to "Sign in", new_user_session_path %></li>
@@ -24,7 +24,7 @@
 	    <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
 	    <li class="divider-vertical"></li>
 	  </ul>
-          <% elsif user_signed_in? and not admin_signed_in? -%>
+          <% elsif user_signed_in? -%>
           <ul class="nav">
             <li class="divider-vertical"></li>
 	    <li class="dropdown">
@@ -45,18 +45,6 @@
             <li class="divider-vertical"></li>
 	    <li><a href="http://opensourcescholars.org/">OpenSourceScholars.org</a></li>
  	    <li class="divider-vertical"></li>
-	  </ul>
-	  <% elsif admin_signed_in? and not user_signed_in? -%>
-	  <ul class="nav">
- 	    <li class="divider-vertical"></li>
-	    <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></li>
- 	    <li class="divider-vertical"></li>
-	    <li><%= link_to "Create admin", "#" %></li>
- 	    <li class="divider-vertical"></li>
-	  </ul>
-	  <% else %>
-	  <ul class="nav">
-	    <li><%= link_to "Sign out", destroy_admin_session_path, :method => :delete %></li>
 	  </ul>
           <% end -%>
 	  <ul class="nav pull-right">

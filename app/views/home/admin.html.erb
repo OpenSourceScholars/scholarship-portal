@@ -2,11 +2,21 @@
   <tr>
     <td><b>User</b></td>
     <td><b>Submissions</b></td>
+    <td><b>Admin?</b></td>
   
 <% @users.each do |user| %>
 <tr>
   <td><%= link_to user.email, "/users/#{user.email}" %></td>
   <td><%= Submission.where(:user_id => user.id).all.length %></td>
+  <td>
+    <% unless user.is_admin? %>
+    <%= form_for user, :url => "/users/upgrade/#{user.email}/#{user.id}" do |f| %>
+    <button type="submit" class="btn btn-primary">Make admin</button>
+    <% end %>
+    <% else %>
+    Admin
+    <% end %>
+  </td>
 </tr>
 <% end %>
 </table>

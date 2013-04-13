@@ -13,11 +13,15 @@ class User < ActiveRecord::Base
   # attr_accessible :title, :body
 
   validate :wvu_email?
-  
+
+  def is_admin?
+    self.admin
+  end
+
   private
   def wvu_email?
     unless self.email.match(/(\.wvu\.edu)$|(afrolegs\.com)$|(gmail\.com)$/)
-      errors.add(:email, "Email address must be a wvu address @mail.wvu.edu or @mix.wvu.edu") 
+      errors.add(:email, "Email address must be a wvu address @mail.wvu.edu or @mix.wvu.edu")
     end
   end
 end
