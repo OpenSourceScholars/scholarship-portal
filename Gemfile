@@ -42,3 +42,5 @@ if RUBY_PLATFORM.downcase.include?("linux")
 end
 
 gem 'devise'
+
+gem 'mysql'
