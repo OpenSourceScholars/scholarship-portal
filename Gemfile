@@ -43,5 +43,4 @@ end
 
 gem 'devise'
 
-gem 'mysql'
-gem 'activerecord-mysql-adapter'
+gem 'mysql2'

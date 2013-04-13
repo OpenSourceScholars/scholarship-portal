@@ -19,7 +19,7 @@ test:
   timeout: 5000
 
 production:
-  adapter: mysql
+  adapter: mysql2
   username: portal
   password: <%= begin IO.read("config/.db_password") rescue "" end %>
   database: scholarship_portal
