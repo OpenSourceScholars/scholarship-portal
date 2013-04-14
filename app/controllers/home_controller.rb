@@ -20,18 +20,26 @@ class HomeController < ApplicationController
 
   def upgrade
     @user = User.where(:email => params[:user][:email]).first
-    @user.admin = 1
-    @user.save
-    flash[:info] = "#{@user.email} is now an admin!"
-    redirect_to '/admin'
+    @user.admin = true
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to '/admin', notice: "#{@user.email} is now an admin!" }
+      else
+        format.html { render action: "admin" }
+      end
+    end
   end
 
   def downgrade
     @user = User.where(:email => params[:user][:email]).first
-    @user.admin = 0
-    @user.save
-    flash[:info] = "#{@user.email} is now nothing!"
-    redirect_to '/admin'
+    @user.admin = false
+    respond_to do |format|
+      if @user.save
+        format.html { redirect_to '/admin', notice: "#{@user.email} is now nothing!" }
+      else
+        format.html { render action: "admin" }
+      end
+    end
   end
 
   private
