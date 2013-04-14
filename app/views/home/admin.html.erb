@@ -14,7 +14,9 @@
     <button type="submit" class="btn btn-primary">Make admin</button>
     <% end %>
     <% else %>
-    Admin
+    <%= form_for user, :url => "/users/downgrade/#{user.email}/#{user.id}" do |f| %>
+    <button type="submit" class="btn btn-danger">Revoke admin</button>
+    <% end %>
     <% end %>
   </td>
 </tr>

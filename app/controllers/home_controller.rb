@@ -1,5 +1,5 @@
 class HomeController < ApplicationController
-  before_filter :ensure_admin!, :only => [:admin, :user, :show, :upgrade]
+  before_filter :ensure_admin!, :only => [:admin, :downgrade, :user, :show, :upgrade]
 
   def index
   end
@@ -23,6 +23,14 @@ class HomeController < ApplicationController
     @user.admin = true
     @user.save
     flash[:info] = "#{@user.email} is now an admin!"
+    redirect_to '/admin'
+  end
+
+  def downgrade
+    @user = User.where(:email => params[:email]).first
+    @user.admin = false
+    @user.save
+    flash[:info] = "#{@user.email} is now nothing!"
     redirect_to '/admin'
   end
 
