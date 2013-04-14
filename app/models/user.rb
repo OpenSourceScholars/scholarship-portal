@@ -12,7 +12,7 @@ class User < ActiveRecord::Base
   attr_accessible :admin, :email, :password, :password_confirmation, :remember_me
   # attr_accessible :title, :body
 
-  validate :valid_email?
+  validate :valid_email?, :if => :email_changed?
 
   def is_admin?
     self.admin
