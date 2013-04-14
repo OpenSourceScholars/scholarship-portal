@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   def upgrade
     @user = User.where(:email => params[:user][:email]).first
     respond_to do |format|
-      if @user.update_attributes(:admin => true)
+      if @user.make_admin
         format.html { redirect_to '/admin', notice: "#{@user.email} is now an admin!" }
       else
         format.html { redirect_to '/admin', notice: "Failed to update users table!" }
@@ -32,7 +32,7 @@ class HomeController < ApplicationController
   def downgrade
     @user = User.where(:email => params[:user][:email]).first
     respond_to do |format|
-      if @user.update_attributes(:admin => false)
+      if @user.revoke_admin
         format.html { redirect_to '/admin', notice: "#{@user.email} is now nothing!" }
       else
         format.html { redirect_to '/admin', notice: "Failed to update users table!" }

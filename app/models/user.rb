@@ -18,6 +18,14 @@ class User < ActiveRecord::Base
     self.admin
   end
 
+  def make_admin
+    self.update_attributes(:admin => true)
+  end
+
+  def revoke_admin
+    self.update_attributes(:admin => false)
+  end
+
   private
   def valid_email?
     if Rails.env.production?
