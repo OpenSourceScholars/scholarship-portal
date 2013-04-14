@@ -19,7 +19,7 @@ class HomeController < ApplicationController
   end
 
   def upgrade
-    @user = User.where(:email => params[:email]).first
+    @user = User.where(:email => params[:user][:email]).first
     @user.admin = 1
     @user.save
     flash[:info] = "#{@user.email} is now an admin!"
@@ -27,7 +27,7 @@ class HomeController < ApplicationController
   end
 
   def downgrade
-    @user = User.where(:email => params[:email]).first
+    @user = User.where(:email => params[:user][:email]).first
     @user.admin = 0
     @user.save
     flash[:info] = "#{@user.email} is now nothing!"
