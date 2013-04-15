@@ -8,6 +8,16 @@ class HomeController < ApplicationController
     @users = User.all.sort_by { |user| user.email }
   end
 
+  def deploy
+    github_ips = ['207.97.227.253', '50.57.128.197', '108.171.174.178', '50.57.231.61', '127.0.0.1']
+    if github_ips.include? request.remote_ip
+      system './deploy.sh'
+      head :ok
+    else
+      raise ActionController::RoutingError.new('Not Found')
+    end
+  end
+
   def user
     @user = User.where(:email => params[:email]).first
     @submissions = Submission.where(:user_id => @user.id).all
