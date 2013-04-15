@@ -4,7 +4,7 @@ ScholarshipPortal::Application.routes.draw do
 
   root :to => "home#index"
 
-  match "/deploy" => "home#deploy", :via => :get
+  match "/deploy" => "home#deploy", :via => :post
   match "/admin" => "home#admin"
   match "/users/upgrade" => "home#upgrade"
   match "/users/downgrade" => "home#downgrade"
