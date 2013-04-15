@@ -9,13 +9,8 @@ class HomeController < ApplicationController
   end
 
   def deploy
-    github_ips = ['207.97.227.253', '50.57.128.197', '108.171.174.178', '50.57.231.61', '127.0.0.1']
-    if github_ips.include? request.remote_ip
       system './deploy.sh'
       head :ok
-    else
-      raise ActionController::RoutingError.new('Not Found')
-    end
   end
 
   def user
