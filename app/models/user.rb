@@ -14,19 +14,23 @@ class User < ActiveRecord::Base
 
   validate :valid_email?, :if => :email_changed?
 
+  # Is user an admin?
   def is_admin?
     self.admin
   end
 
+  # Grant admin rights to user.
   def make_admin
     self.update_attributes(:admin => true)
   end
 
+  # Revoke admin rights from user.
   def revoke_admin
     self.update_attributes(:admin => false)
   end
 
   private
+  # Users must register with a WVU email address.
   def valid_email?
     if Rails.env.production?
       unless self.email.match(/(\.wvu\.edu)$/)
