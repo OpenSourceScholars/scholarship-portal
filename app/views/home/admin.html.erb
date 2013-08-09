@@ -15,7 +15,7 @@
     <button type="submit" class="btn btn-primary">Make admin</button>
     <% end %>
     <% else %>
-    <% if not user == current_user and not current_user.is_admin? %>
+    <% if not user == current_user %>
     <%= form_for :user, :url => url_for(:controller => 'home', :action => 'downgrade') do |f| %>
     <%=f.hidden_field :email, :value => user.email %>
     <button type="submit" class="btn btn-danger">Revoke admin</button>
