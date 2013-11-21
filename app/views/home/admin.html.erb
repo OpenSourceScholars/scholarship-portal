@@ -1,13 +1,13 @@
 <table class="table-striped" width="100%" cellpadding="10">
   <tr>
     <td><b>User</b></td>
-    <td><b>Submissions</b></td>
+    <td><b>Active Submissions</b></td>
     <td><b>Admin?</b></td>
   
 <% @users.each do |user| %>
 <tr>
   <td><%= link_to user.email, "/users/#{user.email}" %></td>
-  <td><%= Submission.where(:user_id => user.id).all.length %></td>
+  <td><%= Submission.where(:user_id => user.id, :active => true).all.length %></td>
   <td>
     <% unless user.is_admin? %>
     <%= form_for :user, :url => url_for(:controller => 'home', :action => 'upgrade') do |f| %>

@@ -21,7 +21,7 @@ class HomeController < ApplicationController
   # GET /users/:email
   def user
     @user = User.where(:email => params[:email]).first
-    @submissions = Submission.where(:user_id => @user.id).all
+    @submissions = Submission.where(:user_id => @user.id, :active => true).all
   end
 
   # GET /users/:email/:id
