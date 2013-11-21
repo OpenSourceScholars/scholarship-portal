@@ -6,7 +6,7 @@ class SubmissionsController < ApplicationController
   # GET /submissions
   # GET /submissions.json
   def index
-    @submissions = Submission.where(:user_id => current_user.id).all
+    @submissions = Submission.where(:user_id => current_user.id).all.sort! {|a,b| b.created_at <=> a.created_at}
 
     respond_to do |format|
       format.html # index.html.erb
@@ -47,6 +47,7 @@ class SubmissionsController < ApplicationController
 
     @submission = Submission.new(params[:submission])
     @submission.user_id = current_user.id
+    @submission.active = true
 
     respond_to do |format|
       if @submission.save
@@ -65,11 +66,11 @@ class SubmissionsController < ApplicationController
     @submission = Submission.find(params[:id])
 
     respond_to do |format|
-      if @submission.update_attributes(params[:submission])
+      if @submission.active and @submission.update_attributes(params[:submission])
         format.html { redirect_to @submission, notice: 'Submission was successfully updated.' }
         format.json { head :no_content }
       else
-        format.html { render action: "edit" }
+        format.html { render action: "edit", notice: 'Could not update submission. Is it active?' }
         format.json { render json: @submission.errors, status: :unprocessable_entity }
       end
     end
@@ -91,4 +92,5 @@ class SubmissionsController < ApplicationController
   def find_submission
     @post = current_user.submissions.find(params[:id])
   end
+
 end

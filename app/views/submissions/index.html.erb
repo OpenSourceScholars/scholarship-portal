@@ -1,25 +1,36 @@
 <h2>Your Submissions</h2>
 
+<p>Submissions completed as part of a previous scholarship period will not be active.</p>
 <br />
 
 <table class="table-striped" width="100%" cellpadding="10">
   <tr>
     <td><b>Project</b></td>
     <td><b>Short Description</b></td>
+    <td><b>Active</b></td>
     <th></th>
   </tr>
 
 <% @submissions.each do |submission| %>
+<% if submission.active %>
   <tr>
     <td><%= submission.project %></td>
     <td><%= submission.blurb %></td>
+    <td><%= submission.active %></td>
     <td><%= link_to 'Show', submission, :class => "btn" %>
     <%= link_to 'Edit', edit_submission_path(submission), :class => "btn" %>
     <%= link_to 'Destroy', submission, method: :delete, data: { confirm: 'Are you sure?' }, :class => "btn" %></td>
   </tr>
+<% else %>
+  <tr class="error">
+    <td><%= submission.project %></td>
+    <td><%= submission.blurb %></td>
+    <td><%= submission.active %></td>
+    <td><%= link_to 'Show', submission, :class => "btn" %></td>
+  </tr>
+<% end %>
 <% end %>
 </table>
-
 <br />
 
 <%= link_to 'New Submission', new_submission_path, :class => "btn btn-primary"%>

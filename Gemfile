@@ -44,3 +44,5 @@ end
 gem 'devise'
 
 gem 'mysql2'
+
+gem 'flash_render'
